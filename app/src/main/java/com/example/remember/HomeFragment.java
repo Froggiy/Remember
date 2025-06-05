@@ -26,9 +26,6 @@ public class HomeFragment extends Fragment {
     static NotesAdapter notesAdapter;
     private TextView textView;
     private List<Note> notes = new ArrayList<>();
-    public HomeFragment() {
-        // Required empty public constructor
-    }
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater,
                                  @Nullable ViewGroup container,
@@ -58,9 +55,6 @@ public class HomeFragment extends Fragment {
                 notes.add(new Note(title, text));
             }
 
-            if (!notes.isEmpty()) {
-                textView.setVisibility(View.INVISIBLE);
-            }
 
             notesAdapter.notifyDataSetChanged(); // Refresh RecyclerView
         }
@@ -69,5 +63,6 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         loadNotes();
+        if (!notes.isEmpty()) {textView.setVisibility(View.INVISIBLE);}
     }
 }
